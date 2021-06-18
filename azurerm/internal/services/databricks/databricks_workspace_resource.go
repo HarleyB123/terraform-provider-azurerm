@@ -115,6 +115,40 @@ func resourceDatabricksWorkspace() *pluginsdk.Resource {
 								"custom_parameters.0.private_subnet_name", "custom_parameters.0.virtual_network_id",
 							},
 						},
+						"encryption": {
+							Type:     pluginsdk.TypeList,
+							Optional: true,
+							Computed: true,
+							Elem: &pluginsdk.Resource{
+								Schema: map[string]*pluginsdk.Schema{
+									"prepare_encryption": {
+										Type:     pluginsdk.TypeBool,
+										ForceNew: true,
+										Required: true,
+									},
+									"key_source": {
+										Type:     pluginsdk.TypeString,
+										ForceNew: true,
+										Required: true,
+									},
+									"keyvault_uri": {
+										Type:     pluginsdk.TypeString,
+										ForceNew: true,
+										Required: true,
+									},
+									"key_name": {
+										Type:     pluginsdk.TypeString,
+										ForceNew: true,
+										Required: true,
+									},
+									"key_version": {
+										Type:     pluginsdk.TypeString,
+										ForceNew: true,
+										Required: true,
+									},
+								},
+							},
+						},
 					},
 				},
 			},
